@@ -3,13 +3,13 @@ import Navbar from './Components/Navbar';
 import TextForm from './Components/TextForm';
 import React, { useState } from 'react'
 import Alert from './Components/Alert';
-import About from './Components/About';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom";
+// import About from './Components/About';
+// import {
+//   BrowserRouter as Router,
+//   Switch,
+//   Route,
+//   Link
+// } from "react-router-dom";
 
 
 function App() {
@@ -40,21 +40,21 @@ function App() {
   }
   return (
     <>
-    <Router>
+    {/* <Router> */}
       <Navbar title="YT" about="About us" mode={mode} toggleMode={toggleMode}/>
       <Alert alert={alert}/>
       <div className="container my-3" >
-      <Switch>
-          <Route exact path="/about">
+      {/* <Switch> */}
+          {/* <Route exact path="/about">
            
             <About />
           </Route>
-          <Route exact path="/">
+          <Route exact path="/"> */}
             <TextForm heading="Enter text here" showAlert={showAlert} mode={mode}/>
-          </Route>
-        </Switch>
+          {/* </Route> */}
+        {/* </Switch> */}
       </div>
-      </Router>
+      {/* </Router> */}
       
     </>
   );
