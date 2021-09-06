@@ -69,10 +69,7 @@ export default function TextForm(props) {
     }
 
     const handlecopyText = () =>{
-        var copyText = document.getElementById('myBox');
-        copyText.select();
-        copyText.setSelectionRange(0,9999);
-        navigator.clipboard.writeText(copyText.value);
+        navigator.clipboard.writeText(Text);
         props.showAlert("Text Copied!", "success");
     }
     return (
@@ -83,20 +80,20 @@ export default function TextForm(props) {
             <div className="mb-3" >
            
          
-                <textarea className="form-control" value={text} id="myBox" rows="15" onChange={textChanged} style={{backgroundColor: props.mode==='dark'?'grey':'white',color: props.mode==='dark'?'white':'#042743'}}></textarea>
+                <textarea className="form-control" value={text} id="myBox" rows="15" onChange={textChanged} style={{backgroundColor: props.mode==='dark'?'#13466e':'white',color: props.mode==='dark'?'white':'#042743'}}></textarea>
             
             </div>
-            <button className="btn btn-primary mx-1" onClick={handleUpclick}>Convert into Uppercase</button>
-            <button className="btn btn-primary mx-1" onClick={handleLoclick}>Convert into Lowercase</button>
-            <button className="btn btn-primary mx-1" onClick={handleClearText}>Clear Text</button>
-            <button className="btn btn-primary mx-1" onClick={handlecopyText}>Copy Text</button>
-            <button className="btn btn-primary mx-1" onClick={handlTextColor}>Change Text color</button>
+            <button className="btn btn-primary mx-1 my-1" onClick={handleUpclick}>Convert into Uppercase</button>
+            <button className="btn btn-primary mx-1 my-1" onClick={handleLoclick}>Convert into Lowercase</button>
+            <button className="btn btn-primary mx-1 my-1" onClick={handleClearText}>Clear Text</button>
+            <button className="btn btn-primary mx-1 my-1" onClick={handlecopyText}>Copy Text</button>
+            <button className="btn btn-primary mx-1 my-1" onClick={handlTextColor}>Change Text color</button>
 
         </div>
         <div className="container my-3">
             <h3>Text Summary</h3>
-            <p>{text.split(" ").length} Words {text.length} Characters</p>
-            <p>{0.008 * text.split(" ").length} Minutes to read</p>
+            <p>{text.split(/\s+/).filter((element)=>{return element.length!==0}).length} Words {text.length} Characters</p>
+            <p>{0.008 * text.split(" ").filter((element)=>{return element.length!==0}).length} Minutes to read</p>
             <h3>Preview</h3>
             <p>{text.length>0?text:"Enter something in above textbox to preview"}</p>
         </div>
